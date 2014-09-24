@@ -119,6 +119,11 @@ var SampleApp = function() {
         for (var r in self.routes) {
             self.app.get(r, self.routes[r]);
         }
+
+        self.use('/public', express.static(__dirname+'/public'));
+        ['css', 'img', 'js', 'plugin', 'lib'].forEach(function(dir){
+            self.use('/'+dir, express.static(__dirname+'/'+dir));
+        });
     };
 
 
@@ -132,6 +137,8 @@ var SampleApp = function() {
 
         // Create the express server and routes.
         self.initializeServer();
+        // self.use(express.static(__dirname + '/images'));
+        // self.listen(8080);
     };
 
 
