@@ -120,9 +120,9 @@ var SampleApp = function() {
             self.app.get(r, self.routes[r]);
         }
 
-        self.use('/public', express.static(__dirname+'/public'));
+        self.app.use('/public', express.static(__dirname+'/public'));
         ['css', 'img', 'js', 'plugin', 'lib'].forEach(function(dir){
-            self.use('/'+dir, express.static(__dirname+'/'+dir));
+            self.app.use('/'+dir, express.static(__dirname+'/'+dir));
         });
     };
 
